@@ -39,6 +39,20 @@
 
 ## 安装
 
+### Claude Code 插件安装
+
+```bash
+# 添加插件市场
+claude plugin marketplace add https://github.com/yanliang941225/docx-modifier
+
+# 安装插件
+claude plugin install docx-modifier
+```
+
+安装后在 Claude Code 中直接说"帮我修改这个 Word 文档的内容，保留格式"即可自动触发。
+
+### Python 库安装
+
 ```bash
 pip install lxml
 ```

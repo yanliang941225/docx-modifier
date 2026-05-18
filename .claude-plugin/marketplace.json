@@ -1,0 +1,13 @@
+{
+  "name": "yanliang-claude-plugins",
+  "description": "Claude Code plugins by yanliang941225 — document processing, format-preserving editing tools",
+  "plugins": [
+    {
+      "name": "docx-modifier",
+      "source": ".",
+      "description": "Modify .docx text while preserving all formatting. Find-replace, template filling, paragraph-level edits, batch operations. Zero style loss.",
+      "version": "1.0.0",
+      "category": "document-processing"
+    }
+  ]
+}

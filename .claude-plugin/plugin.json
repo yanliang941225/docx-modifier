@@ -1,0 +1,25 @@
+{
+  "name": "docx-modifier",
+  "version": "1.0.0",
+  "description": "Modify text in .docx files while strictly preserving all original formatting — fonts, sizes, styles, tables, headers, footers, and layout. Supports find-replace, template filling, paragraph-level edits, and batch operations.",
+  "author": "yanliang941225",
+  "license": "MIT",
+  "homepage": "https://github.com/yanliang941225/docx-modifier",
+  "repository": "https://github.com/yanliang941225/docx-modifier.git",
+  "keywords": ["docx", "word", "document", "format-preserving", "template", "office", "ooxml"],
+  "category": "document-processing",
+  "skills": [
+    {
+      "name": "docx-modifier",
+      "path": "SKILL.md",
+      "description": "Modify .docx text content while preserving 100% of original formatting"
+    }
+  ],
+  "compatibility": {
+    "claudeCode": ">=1.0.0",
+    "python": ">=3.8"
+  },
+  "dependencies": {
+    "python": ["lxml"]
+  }
+}
