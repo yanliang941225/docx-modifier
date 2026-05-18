@@ -1,0 +1,61 @@
+{
+  "skill_name": "docx-modifier",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a contract template at evals/fixtures/test_template.docx. Please fill in the placeholders: {{PARTY_A}} should be 北京智创科技有限公司, {{PARTY_B}} should be 上海数智信息技术有限公司, {{AMOUNT}} should be 500000, {{DELIVERY_DATE}} should be 2026年12月31日, {{SIGN_DATE}} should be 2026年5月18日, and {{COMPANY_NAME}} in the header should be 北京智创科技有限公司. Save the result as /tmp/eval1_filled_contract.docx",
+      "expected_output": "A filled contract DOCX with all placeholders replaced while preserving all font formatting (仿宋_GB2312, 黑体, 宋体), font sizes, bold styles, alignment, paragraph indentation, and spacing",
+      "files": ["evals/fixtures/test_template.docx"],
+      "expectations": [
+        "Output file exists at the expected path",
+        "Output is a valid DOCX (ZIP archive with word/document.xml)",
+        "All 6 placeholders replaced — no {{...}} patterns remain in document body",
+        "PARTY_A correctly replaced with 北京智创科技有限公司",
+        "PARTY_B correctly replaced with 上海数智信息技术有限公司",
+        "AMOUNT correctly replaced with 500000 in both locations",
+        "DELIVERY_DATE correctly replaced with 2026年12月31日",
+        "SIGN_DATE correctly replaced with 2026年5月18日",
+        "Header {{COMPANY_NAME}} replaced with 北京智创科技有限公司",
+        "Original fonts preserved: 仿宋_GB2312, 黑体, 宋体",
+        "Original font sizes preserved: w:sz values include 32, 28, 24",
+        "Paragraph formatting preserved: indentation, spacing, centered alignment"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Take the contract at evals/fixtures/test_template.docx, change the title (paragraph 0) from '技术服务合同' to '人工智能技术服务合同', and also change paragraph 1 from '合同编号：HT-2026-001' to '合同编号：HT-2026-002'. Keep ALL formatting exactly as the original. Save as /tmp/eval2_updated_title.docx",
+      "expected_output": "DOCX with paragraph 0 and paragraph 1 text changed, all formatting (centered alignment, 黑体 title, 宋体 subtitle, font sizes) preserved exactly",
+      "files": ["evals/fixtures/test_template.docx"],
+      "expectations": [
+        "Output file exists at the expected path",
+        "Output is a valid DOCX (ZIP archive with word/document.xml)",
+        "Paragraph 0 text is '人工智能技术服务合同'",
+        "Paragraph 1 text is '合同编号：HT-2026-002'",
+        "Title formatting preserved: centered alignment on paragraph 0",
+        "Title formatting preserved: bold element present in paragraph 0 runs",
+        "Title formatting preserved: font is 黑体",
+        "Title formatting preserved: font size is 32",
+        "Paragraphs 2+ unchanged — paragraph 2 still contains '甲方'",
+        "No placeholder artifacts introduced"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "In the file evals/fixtures/test_template.docx, find and replace every occurrence of '甲方' with '委托方' and every occurrence of '乙方' with '受托方' throughout the ENTIRE document (body, headers, footers, everything). The formatting must not change at all. Save as /tmp/eval3_renamed_parties.docx",
+      "expected_output": "DOCX with all instances of 甲方 replaced with 委托方 and 乙方 replaced with 受托方 in body text and headers, all formatting unchanged",
+      "files": ["evals/fixtures/test_template.docx"],
+      "expectations": [
+        "Output file exists at the expected path",
+        "Output is a valid DOCX (ZIP archive with word/document.xml)",
+        "No occurrence of '甲方' remains in document body",
+        "No occurrence of '乙方' remains in document body",
+        "'委托方' appears in the document body at least once",
+        "'受托方' appears in the document body at least once",
+        "Original fonts preserved: 仿宋_GB2312, 黑体, 宋体 still present",
+        "Original font sizes preserved: w:sz values 32, 28, 24 still present",
+        "Paragraph formatting preserved: center alignment, indentation, spacing intact",
+        "No placeholder artifacts in output"
+      ]
+    }
+  ]
+}
